@@ -1,0 +1,18 @@
+The following CSS code snippet demonstrates a common issue where specificity conflicts can lead to unexpected styling behavior.  The `<p>` element within the `.container` class is styled with both a class selector (`.highlight`) and an element selector (`p`). Due to the higher specificity of the class selector, the `.highlight` styles will override the `p` styles, even though `p` is declared later in the CSS file.
+
+```css
+p {
+  color: blue;
+}
+
+.container {
+  background-color: lightgray;
+}
+
+.container .highlight {
+  color: red;
+}
+
+```
+
+This might be unexpected if the developer intends the `p` styles to apply within the `.container` class unless they specifically overwrite them.
