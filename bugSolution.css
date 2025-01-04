@@ -1,0 +1,64 @@
+Several solutions address the specificity conflict:
+
+**Solution 1 (Using !important – Use sparingly!):**
+
+```css
+p {
+  color: blue !important; /*This should be avoided if possible*/
+}
+
+.container {
+  background-color: lightgray;
+}
+
+.container .highlight {
+  color: red;
+}
+
+```
+
+**Solution 2 (Refactoring for better specificity):**
+
+Instead of relying on overriding, restructure your CSS to avoid conflicts.  Here, we introduce an additional class specifically for the highlighted paragraph:
+
+```css
+p {
+  color: blue;
+}
+
+.container {
+  background-color: lightgray;
+}
+
+.highlight-paragraph {
+  color: red;
+}
+
+```
+
+And use it in your HTML like this:
+
+```html
+<div class="container">
+  <p class="highlight-paragraph">This paragraph is highlighted.</p>
+</div>
+```
+
+**Solution 3 (More specific selectors):**
+
+```css
+.container p {
+  color: blue;
+}
+
+.container {
+  background-color: lightgray;
+}
+
+.container .highlight {
+  color: red;
+}
+
+```
+
+This ensures the paragraph inside the container always inherits the blue color first unless overridden by a class.
